@@ -29,4 +29,9 @@ public class EmailController {
         emailService.saveEmails(request.getEmails());
         return ResponseEntity.ok(ResponseDto.<Void>builder().success(true).message("Emails saved").build());
     }
+
+    @GetMapping
+    public String hello() {
+        return "Hello, World!";
+    }
 }
