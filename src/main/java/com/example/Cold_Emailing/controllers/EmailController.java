@@ -41,6 +41,11 @@ public class EmailController {
         return "Hello, World!";
     }
 
+    @GetMapping("/hello1")
+    public String hellos1() {
+        return "Hello, World! I am Anmol Mehla";
+    }
+
     @GetMapping("/em")
     public ResponseEntity<ResponseDto<String>> getAllEmails() {
         return ResponseEntity.ok(
