@@ -1,6 +1,7 @@
 package com.example.Cold_Emailing.controllers;
 
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -34,4 +35,11 @@ public class EmailController {
     public String hello() {
         return "Hello, World!";
     }
+
+    // Get all saved emails
+    @GetMapping("/emails")
+    public String getAllEmails() {
+        return "Hello World I am ANmol Mehla";// just return list directly
+    }
+
 }
