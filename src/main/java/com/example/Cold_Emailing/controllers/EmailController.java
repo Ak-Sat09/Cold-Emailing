@@ -36,10 +36,13 @@ public class EmailController {
         return "Hello, World!";
     }
 
-    // Get all saved emails
     @GetMapping("/emails")
-    public String getAllEmails() {
-        return "Hello World I am ANmol Mehla";// just return list directly
+    public ResponseEntity<ResponseDto<String>> getAllEmails() {
+        return ResponseEntity.ok(
+                ResponseDto.<String>builder()
+                        .success(true)
+                        .data("Hello World I am Anmol Mehla")
+                        .build());
     }
 
 }
