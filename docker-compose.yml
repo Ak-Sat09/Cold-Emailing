@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  mysql-db:
+    image: mysql:8
+    container_name: cold-emailing-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: Mehla@6228  # root password
+      MYSQL_DATABASE: EmailData         # optional DB creation
+      # Removed MYSQL_USER and MYSQL_PASSWORD to fix restart loop
+    ports:
+      - "3307:3306" 
+    volumes:
+      - db-data:/var/lib/mysql
+    restart: unless-stopped
+
+  app:
+    image: 8398963836/cold-emailing-app:latest  # Pull your app from Docker Hub
+    container_name: cold-emailing-app
+    depends_on:
+      - mysql-db
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/EmailData
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: Mehla@6228
+
+volumes:
+  db-data:
