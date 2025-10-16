@@ -1,8 +1,8 @@
 # Build stage
-FROM eclipse-temurin:21-jdk-alpine AS build
+FROM maven:3.9.0-eclipse-temurin-21 AS build
 WORKDIR /app
 COPY . .
-RUN ./mvnw clean package -DskipTests
+RUN mvn clean package -DskipTests
 
 # Run stage
 FROM eclipse-temurin:21-jdk-alpine
