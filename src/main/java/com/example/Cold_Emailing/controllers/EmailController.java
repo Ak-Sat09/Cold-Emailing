@@ -36,7 +36,7 @@ public class EmailController {
         return "Hello, World!";
     }
 
-    @GetMapping("/emails")
+    @GetMapping("/em")
     public ResponseEntity<ResponseDto<String>> getAllEmails() {
         return ResponseEntity.ok(
                 ResponseDto.<String>builder()
