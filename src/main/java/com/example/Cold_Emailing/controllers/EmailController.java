@@ -38,4 +38,12 @@ public class EmailController {
                         .build());
     }
 
+    @GetMapping("/ems")
+    public ResponseEntity<ResponseDto<String>> getAllEmails1() {
+        return ResponseEntity.ok(
+                ResponseDto.<String>builder()
+                        .success(true)
+                        .data("Hello World I am Anmol Mehla")
+                        .build());
+    }
 }
