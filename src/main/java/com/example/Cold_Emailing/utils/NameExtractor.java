@@ -13,15 +13,25 @@ public final class NameExtractor {
     public static String extractName(String email) {
         if (email == null || !email.contains("@"))
             return "";
+
         String prefix = email.split("@")[0];
+
+        // Block generic emails
         if (BLOCKED.contains(prefix.toLowerCase()))
             return "";
-        prefix = prefix.replace(".", " ").replace("_", " ");
+
+        // Replace separators and remove numbers
+        prefix = prefix.replace(".", " ").replace("_", " ").replaceAll("\\d+", "");
+
+        // Get first word only
         String[] parts = prefix.split(" ");
         if (parts.length == 0 || parts[0].isBlank())
             return "";
-        String raw = parts[0];
-        return Character.toUpperCase(raw.charAt(0)) + raw.substring(1);
+
+        String raw = parts[0].trim();
+
+        // Capitalize first letter
+        return Character.toUpperCase(raw.charAt(0)) + raw.substring(1).toLowerCase();
     }
 
     public static String extractCompany(String email) {

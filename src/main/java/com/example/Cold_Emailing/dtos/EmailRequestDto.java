@@ -3,6 +3,7 @@ package com.example.Cold_Emailing.dtos;
 import jakarta.validation.constraints.*;
 import lombok.*;
 import java.util.List;
+import java.time.Instant;
 
 @Getter
 @Setter
@@ -18,4 +19,7 @@ public class EmailRequestDto {
 
     @NotBlank(message = "message required")
     private String message;
+
+    @NotNull(message = "scheduledTime required")
+    private Instant scheduledTime; // New field for UTC scheduling
 }

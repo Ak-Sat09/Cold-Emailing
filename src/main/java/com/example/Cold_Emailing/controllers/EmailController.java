@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 import com.example.Cold_Emailing.dtos.EmailRequestDto;
 import com.example.Cold_Emailing.dtos.ResponseDto;
-import com.example.Cold_Emailing.dtos.SaveEmailsDto;
 import com.example.Cold_Emailing.services.EmailService;
 
 @RestController
@@ -23,12 +22,6 @@ public class EmailController {
     public ResponseEntity<ResponseDto<Void>> sendEmail(@RequestBody @Validated EmailRequestDto request) {
         emailService.sendEmails(request);
         return ResponseEntity.ok(ResponseDto.<Void>builder().success(true).message("Emails sent").build());
-    }
-
-    @PostMapping("/save")
-    public ResponseEntity<ResponseDto<Void>> saveEmails(@RequestBody @Validated SaveEmailsDto request) {
-        emailService.saveEmails(request.getEmails());
-        return ResponseEntity.ok(ResponseDto.<Void>builder().success(true).message("Emails saved").build());
     }
 
     @GetMapping
